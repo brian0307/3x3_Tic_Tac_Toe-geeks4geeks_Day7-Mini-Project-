@@ -93,7 +93,7 @@ public class Tic_Tac_Toe {
         printBoard();
         System.out.println("X will play first. Enter a slot number to place X in: ");
 
-        for (int turn = 0; turn < 9;)
+        for (; turn < 9;)
         {
             int numInput;
             try
@@ -140,7 +140,11 @@ public class Tic_Tac_Toe {
                 {
                     start = "X";
                 }
-                System.out.println(start + "'s turn; enter a slot number to place " + start + " in:");
+
+                if (checkWinningLines() == null && turn < 8)
+                {
+                    System.out.println(start + "'s turn; enter a slot number to place " + start + " in:");
+                }
             }
             turn++;
 
@@ -150,21 +154,16 @@ public class Tic_Tac_Toe {
                     if (checkWinningLines().equals("X"))
                     {
                         System.out.println("Congratulations! X's have won! Thanks for playing.");
-                        scanner.close();
-                        return;
                     }
                     else if (checkWinningLines().equals("O"))
                     {
                         System.out.println("Congratulations! O's have won! Thanks for playing.");
-                        scanner.close();
-                        return;
                     }
                     else if (checkWinningLines().equals("draw"))
                     {
                         System.out.println("It's a draw! Thanks for playing.");
-                        scanner.close();
-                        return;
                     }
+                    break;
                 }
             }
         }
