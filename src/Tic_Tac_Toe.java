@@ -148,22 +148,25 @@ public class Tic_Tac_Toe {
             }
             turn++;
 
-            if (turn >= 5) {
-                if (!(checkWinningLines() == null))
+            if (turn >= 5)
+            {
+                String result = checkWinningLines();
+                if (result != null)
                 {
-                    if (checkWinningLines().equals("X"))
+                    switch (result)
                     {
-                        System.out.println("Congratulations! X's have won! Thanks for playing.");
+                        case "X":
+                            System.out.println("Congratulations! X's have won! Thanks for playing.");
+                            break;
+                        case "O":
+                            System.out.println("Congratulations! O's have won! Thanks for playing.");
+                            break;
+                        case "draw":
+                            System.out.println("It's a draw! Thanks for playing.");
+                            break;
                     }
-                    else if (checkWinningLines().equals("O"))
-                    {
-                        System.out.println("Congratulations! O's have won! Thanks for playing.");
-                    }
-                    else if (checkWinningLines().equals("draw"))
-                    {
-                        System.out.println("It's a draw! Thanks for playing.");
-                    }
-                    break;
+                    scanner.close();
+                    break;  // ← 結束遊戲
                 }
             }
         }
